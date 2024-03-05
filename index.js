@@ -86,3 +86,12 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099],
   ];
+
+  console.log(finances);
+
+
+  var totalMonths = finances.length;
+  console.log(totalMonths);
+
+  var totalProfitLoss = finances.reduce((acc, curr) => acc + curr[1], 0);
+  console.log(totalProfitLoss);
