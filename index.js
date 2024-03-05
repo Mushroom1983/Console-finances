@@ -87,40 +87,46 @@ var finances = [
     ['Feb-2017', 671099],
   ];
 
-  console.log(finances);
+  console.log("Financial Analysis");
+  console.log("-------------------------------");
 
 
   var totalMonths = finances.length;
   console.log(totalMonths);
 
-  var totalProfitLoss = finances.reduce((acc, curr) => acc + curr[1], 0);
-  console.log(totalProfitLoss);
+  var totalProfitLosses = finances.reduce((total, record) => total + record[1], 0);
+  console.log("Total: $" + totalProfitLosses);
+
 
   var totalChange = 0;
   var maxIncrease = 0;
   var maxDecrease = 0;
-  var maxIncreaseMonth = 0;
-  var maxDecreaseMonth = 0;
+  var maxIncreaseMonth = "";
+  var maxDecreaseMonth = "";
 
-  for (let i = 1; i < finances.length; i++) {
-    totalChange = finances[i][1] - finances[i - 1][1];
-    if (totalChange > maxIncrease) {
+  for (var i = 1; i < finances.length; i++) {
+    var change = finances[i][1] - finances[i - 1][1];
+    totalChange += change;
+
+    if (change > maxIncrease) {
       maxIncrease = totalChange;
       maxIncreaseMonth = finances[i][0];
     }
-    if (totalChange < maxDecrease) {
+
+    if (change < maxDecrease) {
       maxDecrease = totalChange;
       maxDecreaseMonth = finances[i][0];
     }
     
+    
   }
   
 
-  var averageChange = totalChange / (totalMonths - 1); 
-  console.log(averageChange);
+  var averageChange = totalChange / (totalMonths - 1);
+  
+  console.log("Average Change: $" + averageChange.toFixed(2));
 
-  console.log(maxIncreaseMonth, maxIncrease);
-  console.log(maxDecreaseMonth, maxDecrease);
+  console.log(" Greatest Increase in Profits/Losses: " + maxIncreaseMonth +"($" + maxIncrease + ")");
+  console.log(" Greatest Decrease in Profits/Losses: " + maxDecreaseMonth +"($" + maxDecrease + ")");
 
-  // var maxProfitLoss = finances.reduce((acc, curr) => Math.max(acc, curr[1]), 0);
-  // console.log(maxProfitLoss);
+  
