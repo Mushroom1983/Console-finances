@@ -92,7 +92,7 @@ var finances = [
 
 
   var totalMonths = finances.length;
-  console.log(totalMonths);
+  console.log("Total Months:", totalMonths);
 
   var totalProfitLosses = finances.reduce((total, record) => total + record[1], 0);
   console.log("Total: $" + totalProfitLosses);
@@ -114,7 +114,7 @@ var finances = [
     }
 
     if (change < maxDecrease) {
-      maxDecrease = totalChange;
+      maxDecrease = change;
       maxDecreaseMonth = finances[i][0];
     }
     
