@@ -95,3 +95,32 @@ var finances = [
 
   var totalProfitLoss = finances.reduce((acc, curr) => acc + curr[1], 0);
   console.log(totalProfitLoss);
+
+  var totalChange = 0;
+  var maxIncrease = 0;
+  var maxDecrease = 0;
+  var maxIncreaseMonth = 0;
+  var maxDecreaseMonth = 0;
+
+  for (let i = 1; i < finances.length; i++) {
+    totalChange = finances[i][1] - finances[i - 1][1];
+    if (totalChange > maxIncrease) {
+      maxIncrease = totalChange;
+      maxIncreaseMonth = finances[i][0];
+    }
+    if (totalChange < maxDecrease) {
+      maxDecrease = totalChange;
+      maxDecreaseMonth = finances[i][0];
+    }
+    
+  }
+  
+
+  var averageChange = totalChange / (totalMonths - 1); 
+  console.log(averageChange);
+
+  console.log(maxIncreaseMonth, maxIncrease);
+  console.log(maxDecreaseMonth, maxDecrease);
+
+  // var maxProfitLoss = finances.reduce((acc, curr) => Math.max(acc, curr[1]), 0);
+  // console.log(maxProfitLoss);
